@@ -10,21 +10,21 @@
     tools:context=".activitys.signup">
 
     <TextView
-        android:id="@+id/text1"
+        android:id="@+id/tv_signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Up"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="30sp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5" />
 
     <EditText
-        android:id="@+id/ed1"
+        android:id="@+id/et_name"
         android:layout_width="350dp"
         android:layout_height="60dp"
         android:layout_marginTop="30dp"
@@ -32,24 +32,12 @@
         android:hint="Enter fullname"
         android:textColorHint="#E5E4E7"
         android:paddingLeft="20dp"
-        app:layout_constraintTop_toBottomOf="@id/text1"
+        app:layout_constraintTop_toBottomOf="@id/tv_signUp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/ed2"
-        android:layout_width="350dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/input_style"
-        android:hint="Enter username"
-        android:textColorHint="#E5E4E7"
-        android:paddingLeft="20dp"
-        app:layout_constraintTop_toBottomOf="@id/ed1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-    <EditText
-        android:id="@+id/ed3"
+        android:id="@+id/et_email"
         android:layout_width="350dp"
         android:layout_height="60dp"
         android:layout_marginTop="30dp"
@@ -57,12 +45,12 @@
         android:hint="Enter e-mail"
         android:textColorHint="#E5E4E7"
         android:paddingLeft="20dp"
-        app:layout_constraintTop_toBottomOf="@id/ed2"
+        app:layout_constraintTop_toBottomOf="@id/et_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/ed4"
+        android:id="@+id/et_password"
         android:layout_width="350dp"
         android:layout_height="60dp"
         android:layout_marginTop="30dp"
@@ -73,11 +61,11 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:longClickable="false"
-        app:layout_constraintTop_toBottomOf="@id/ed3"
+        app:layout_constraintTop_toBottomOf="@id/et_email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
+    <Button
         android:id="@+id/btn_sign_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -90,7 +78,8 @@
         android:padding="15dp"
         android:textColor="@color/white"
         android:background="@drawable/input_style"
-        app:layout_constraintTop_toBottomOf="@id/ed4"
+        app:backgroundTint="@null"
+        app:layout_constraintTop_toBottomOf="@id/et_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
     <TextView

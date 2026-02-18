@@ -7,70 +7,89 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.GridView;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project.R;
-import com.example.project.activitys.detail;
+import com.example.project.adapters.MoviesRecyclerAdapter;
+import com.example.project.api.MovieApiService;
 import com.example.project.data.MoviesRepository;
 import com.example.project.models.Movie;
-import com.example.project.adapters.MoviesGridAdapter;
-// (اختياري) للمفضلة:
-// import com.example.project.utils.FavoritesStore;
 
 import java.util.ArrayList;
 
 public class SearchFragment extends Fragment {
 
-    private EditText etSearch;
-    private GridView grid;
-    private MoviesGridAdapter adapter;
-    private ArrayList<Movie> all;
-    private ArrayList<Movie> filtered;
+    EditText et_search;
+    RecyclerView rv;
+    private MoviesRecyclerAdapter moviesRecyclerAdapter;
+    private ArrayList<Movie> movieArrayList;
+    private ArrayList<Movie> moviefilter;
 
     @Override
     public View onCreateView(LayoutInflater inf, ViewGroup container, Bundle s) {
         View v = inf.inflate(R.layout.fragment_search, container, false);
-        etSearch = v.findViewById(R.id.et_search);
-        grid = v.findViewById(R.id.gridSearch);
 
-        all = MoviesRepository.getAll();
-        filtered = new ArrayList<>(all);
+        et_search = v.findViewById(R.id.et_search);
+        rv = v.findViewById(R.id.rvSearch);
 
-        adapter = new MoviesGridAdapter(requireContext(), filtered);
-        grid.setAdapter(adapter);
+        movieArrayList = new ArrayList<>();
+        moviefilter = new ArrayList<>();
 
-        // فتح التفاصيل عند الضغط (يمرّر كل البيانات عبر detail.makeIntent)
-        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Movie m = filtered.get(position);
-                startActivity(detail.makeIntent(requireContext(), m));
+        moviesRecyclerAdapter = new MoviesRecyclerAdapter(requireContext(), moviefilter);
+        rv.setLayoutManager(new GridLayoutManager(requireContext(), 2));
+        rv.setAdapter(moviesRecyclerAdapter);
+
+
+        MovieApiService.fetchMovies(new MovieApiService.MoviesCallback() {
+            @Override
+            public void onSuccess(ArrayList<Movie> movies) {
+                movieArrayList.clear();
+                movieArrayList.addAll(movies);
+
+                moviefilter.clear();
+                moviefilter.addAll(movies);
+                moviesRecyclerAdapter.update(moviefilter);
+            }
+
+            @Override
+            public void onError(String error) {
+                movieArrayList = MoviesRepository.getAll();
+                moviefilter.clear();
+                moviefilter.addAll(movieArrayList);
+                moviesRecyclerAdapter.update(moviefilter);
             }
         });
 
-
-
-        // فلترة للبحث
-        etSearch.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override public void onTextChanged(CharSequence s, int start, int before, int count) { filter(s.toString()); }
-            @Override public void afterTextChanged(Editable s) {}
+        et_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filter(s.toString());
+            }
+            @Override
+            public void afterTextChanged(Editable s) { }
         });
 
         return v;
     }
 
-    private void filter(String q) {
-        q = q.toLowerCase().trim();
-        filtered.clear();
-        if (q.isEmpty()) {
-            filtered.addAll(all);
+    private void filter(String text) {
+        moviefilter.clear();
+        if (text == null || text.isEmpty()) {
+            moviefilter.addAll(movieArrayList);
+
         } else {
-            for (Movie m : all) {
-                if (m.title.toLowerCase().contains(q)) filtered.add(m);
+            text = text.toLowerCase();
+            for (Movie movie : movieArrayList) {
+                if (movie.title != null && movie.title.toLowerCase().contains(text)) {
+                    moviefilter.add(movie);
+                }
             }
         }
-        adapter.update(filtered);
+        moviesRecyclerAdapter.update(moviefilter);
     }
 }

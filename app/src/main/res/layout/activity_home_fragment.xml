@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/background">
 
-    <!-- العنوان -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,16 +14,16 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
+        android:paddingLeft="10dp"
         android:layout_marginBottom="12dp"/>
 
-    <!-- شريط البحث (خاص بالهوم) -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:orientation="horizontal"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:gravity="center_vertical"
         android:layout_marginBottom="12dp">
 
@@ -32,7 +31,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/search"
-            app:tint="#CCCCCC" />
+            app:tint="#CCCCCC"/>
 
         <EditText
             android:id="@+id/et_search_home"
@@ -44,17 +43,17 @@
             android:background="@drawable/input_style"
             android:paddingStart="8dp"
             android:textColor="#FFFFFF"
-            android:textColorHint="#AAAAAA" />
+            android:textColorHint="#AAAAAA"/>
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@android:drawable/ic_btn_speak_now"
-            app:tint="#CCCCCC" />
+            app:tint="#CCCCCC"/>
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnTopRated"
+        android:id="@+id/btn_top_rated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Top Rated"
@@ -62,17 +61,13 @@
         android:backgroundTint="#009688"
         android:textColor="@android:color/white"
         android:elevation="6dp"
-        android:layout_gravity="start"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="12dp" />
 
-    <!-- شبكة الأفلام -->
-    <GridView
-        android:id="@+id/gridMovies"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_movies"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:numColumns="2"
-        android:horizontalSpacing="8dp"
-        android:verticalSpacing="12dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:padding="4dp"/>
 </LinearLayout>

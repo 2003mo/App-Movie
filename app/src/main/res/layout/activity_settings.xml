@@ -20,7 +20,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:id="@+id/userName"
+        android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mohammed fathi"
@@ -38,13 +38,13 @@
         android:text="mohammed.963.2003@gmai.com"
         android:textSize="14sp"
         android:textColor="#BBBBBB"
-        android:layout_below="@id/userName"
+        android:layout_below="@id/user_name"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="30dp"
         android:layout_marginTop="8dp" />
 
     <ImageView
-        android:id="@+id/im1"
+        android:id="@+id/iv_account"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:src="@drawable/ic_account"
@@ -55,7 +55,7 @@
         tools:ignore="UseAppTint" />
 
     <TextView
-        android:id="@+id/tx1"
+        android:id="@+id/tv_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Account"
@@ -64,7 +64,7 @@
         android:textSize="19sp"
         android:layout_marginLeft="13dp"
         android:layout_below="@+id/tv_email"
-        android:layout_toRightOf="@+id/im1"/>
+        android:layout_toRightOf="@+id/iv_account"/>
 
     <ImageView
         android:layout_width="20dp"
@@ -72,24 +72,24 @@
         android:src="@drawable/ic_chevron_right"
         android:tint="#BBBBBB"
         android:layout_below="@+id/tv_email"
-        android:layout_toRightOf="@+id/tx1"
+        android:layout_toRightOf="@+id/tv_account"
         android:layout_marginLeft="200dp"
         android:layout_marginTop="5dp"
         tools:ignore="UseAppTint" />
 
     <ImageView
-        android:id="@+id/im2"
+        android:id="@+id/iv_notification"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:src="@drawable/ic_notifications"
         android:tint="#FFFFFF"
-        android:layout_below="@+id/im1"
+        android:layout_below="@+id/iv_account"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="33dp"
         tools:ignore="UseAppTint" />
 
     <TextView
-        android:id="@+id/tx2"
+        android:id="@+id/tv_notification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Notifications"
@@ -98,32 +98,32 @@
         android:textSize="19sp"
         android:layout_marginLeft="13dp"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/im1"
-        android:layout_toRightOf="@+id/im2"/>
+        android:layout_below="@+id/iv_account"
+        android:layout_toRightOf="@+id/iv_notification"/>
 
     <ImageView
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:src="@drawable/ic_chevron_right"
         android:tint="#BBBBBB"
-        android:layout_below="@+id/im1"
-        android:layout_toRightOf="@+id/tx2"
+        android:layout_below="@+id/iv_account"
+        android:layout_toRightOf="@+id/tv_notification"
         android:layout_marginLeft="165dp"
         android:layout_marginTop="35dp"
         tools:ignore="UseAppTint" />
     <ImageView
-        android:id="@+id/im3"
+        android:id="@+id/iv_privacy"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:src="@drawable/ic_privacy"
         android:tint="#FFFFFF"
-        android:layout_below="@+id/im2"
+        android:layout_below="@+id/iv_notification"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
         tools:ignore="UseAppTint" />
 
     <TextView
-        android:id="@+id/tx3"
+        android:id="@+id/tv_privacy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Privacy"
@@ -132,32 +132,32 @@
         android:textSize="19sp"
         android:layout_marginLeft="13dp"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/im2"
-        android:layout_toRightOf="@+id/im3"/>
+        android:layout_below="@+id/iv_notification"
+        android:layout_toRightOf="@+id/iv_privacy"/>
 
     <ImageView
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:src="@drawable/ic_chevron_right"
         android:tint="#BBBBBB"
-        android:layout_below="@+id/im2"
-        android:layout_toRightOf="@+id/tx3"
+        android:layout_below="@+id/iv_notification"
+        android:layout_toRightOf="@+id/tv_privacy"
         android:layout_marginLeft="208dp"
         android:layout_marginTop="35dp"
         tools:ignore="UseAppTint" />
     <ImageView
-        android:id="@+id/im4"
+        android:id="@+id/iv_security"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:src="@drawable/ic_security"
         android:tint="#FFFFFF"
-        android:layout_below="@+id/im3"
+        android:layout_below="@+id/iv_privacy"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
         tools:ignore="UseAppTint" />
 
     <TextView
-        android:id="@+id/tx4"
+        android:id="@+id/tv_security"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Security"
@@ -166,55 +166,21 @@
         android:textSize="19sp"
         android:layout_marginLeft="13dp"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/im3"
-        android:layout_toRightOf="@+id/im4"/>
+        android:layout_below="@+id/iv_privacy"
+        android:layout_toRightOf="@+id/iv_security"/>
 
     <ImageView
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:src="@drawable/ic_chevron_right"
         android:tint="#BBBBBB"
-        android:layout_below="@+id/im3"
-        android:layout_toRightOf="@+id/tx3"
+        android:layout_below="@+id/iv_privacy"
+        android:layout_toRightOf="@+id/tv_privacy"
         android:layout_marginLeft="205dp"
         android:layout_marginTop="35dp"
         tools:ignore="UseAppTint" />
 
-    <ImageView
-        android:id="@+id/im5"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic2_dark_theme"
-        android:tint="#FFFFFF"
-        android:layout_below="@+id/im4"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="20dp"
-        tools:ignore="UseAppTint" />
 
-    <TextView
-        android:id="@+id/tx5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dark Theme"
-        android:layout_weight="1"
-        android:textColor="#FFFFFF"
-        android:textSize="19sp"
-        android:layout_marginLeft="13dp"
-        android:layout_marginTop="60dp"
-        android:layout_below="@+id/im4"
-        android:layout_toRightOf="@+id/im5"/>
-
-    <Switch
-        android:id="@+id/darkModeSwitch"
-        android:layout_width="48dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/im4"
-        android:layout_marginLeft="160dp"
-        android:layout_marginTop="51dp"
-        android:layout_toRightOf="@+id/tx5"
-        android:thumbTint="#FF5722"
-        android:trackTint="@color/white"
-        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/bt_logout"
@@ -224,7 +190,7 @@
         android:textSize="20sp"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:layout_below="@+id/im5"
+        android:layout_below="@+id/iv_security"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:textStyle="bold"

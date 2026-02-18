@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:padding="12dp"
+    android:padding="10dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background">
@@ -11,14 +11,13 @@
         android:layout_height="wrap_content"
         android:text="Top Rated"
         android:textStyle="bold"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textColor="#FFFFFF"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
 
-    <ListView
-        android:id="@+id/listTop"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTop"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="#33FFFFFF"
-        android:dividerHeight="0.5dp"/>
+        android:layout_height="match_parent"/>
 </LinearLayout>
