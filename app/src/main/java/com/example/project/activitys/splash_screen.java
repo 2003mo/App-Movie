@@ -31,6 +31,7 @@ public class splash_screen extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i=new Intent(splash_screen.this, login.class);
                 startActivity(i);
+                finish();
             }
         });
 

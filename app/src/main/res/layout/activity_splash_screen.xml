@@ -17,8 +17,9 @@
         android:layout_width="0dp"
         android:layout_height="300dp"
         android:background="#AE000000"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_splash"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_splash"/>
 
     <TextView
         android:id="@+id/title1"

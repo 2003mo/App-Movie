@@ -2,70 +2,66 @@ package com.example.project.fragments;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.project.R;
-import com.example.project.activitys.detail;
-import com.example.project.data.MoviesRepository;
+import com.example.project.adapters.MoviesRecyclerAdapter;
+import com.example.project.db.FavoritesDB;
 import com.example.project.models.Movie;
-import com.example.project.adapters.MoviesGridAdapter;
-import com.example.project.utils.FavoritesStore;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 public class FavoritesFragment extends Fragment {
 
-    private GridView grid;
+    private RecyclerView rv;
     private TextView tvEmpty;
-    private MoviesGridAdapter adapter;
-    private ArrayList<Movie> favMovies = new ArrayList<>();
+
+    private MoviesRecyclerAdapter moviesRecyclerAdapter;
+    private final ArrayList<Movie> favs = new ArrayList<>();
+
+    private FavoritesDB db;
 
     @Override
     public View onCreateView(LayoutInflater inf, ViewGroup container, Bundle s) {
+
         View v = inf.inflate(R.layout.fragment_favorites, container, false);
+
         tvEmpty = v.findViewById(R.id.tvEmpty);
-        grid = v.findViewById(R.id.gridFavs);
+        rv = v.findViewById(R.id.rvFavs);
 
-        loadFavs();
-        adapter = new MoviesGridAdapter(requireContext(), favMovies);
-        grid.setAdapter(adapter);
-        grid.setEmptyView(tvEmpty);
+        db = new FavoritesDB(requireContext());
 
-        //AdapterView<?> parent : الي تم الضغط على العنصر الي بداخلهGrid view  هو ال
-        //View view:  الفردي اللي ضغط عليها المستخدم Viewال
-        //position : ترتيب الفلم داخل القائمة
-        //id : رقم الاي دي للفلم
-        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Movie m = favMovies.get(position);
-                //يفتح واجهة التفاصيل الخاصة بالفلم الي ضغط عليه المستخدم وخزنه في متغير (m)
-                startActivity(detail.makeIntent(requireContext(), m));
-            }
-        });
+        moviesRecyclerAdapter = new MoviesRecyclerAdapter(requireContext(), favs);
+        rv.setLayoutManager(new GridLayoutManager(requireContext(), 2));
+        rv.setAdapter(moviesRecyclerAdapter);
+
+        refresh();
+
         return v;
     }
-    //onResume() : دالة عشان اضل واجهة المفضلة دائما محدثة
+
     @Override
     public void onResume() {
         super.onResume();
-        loadFavs();
-        adapter.update(favMovies);
+        refresh();
     }
+    private void refresh() {
+        favs.clear();
+        favs.addAll(db.getAllFavMovies());
 
-    private void loadFavs() {
-        favMovies.clear();
-        Set<String> titles = FavoritesStore.getAllTitles(requireContext());
-        if (titles == null || titles.isEmpty()) return;
+        if (moviesRecyclerAdapter != null) {
+            moviesRecyclerAdapter.update(favs);
+        }
 
-        ArrayList<Movie> all = MoviesRepository.getAll();
-        for (Movie m : all) {
-            if (titles.contains(m.title)) favMovies.add(m);
+        if (tvEmpty != null) {
+            tvEmpty.setVisibility(favs.isEmpty() ? View.VISIBLE : View.GONE);
         }
     }
 }

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="24dp"
     android:gravity="center"
@@ -48,23 +49,24 @@
         android:textColor="#E5E4E7"
         android:textSize="17sp"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="100dp"
-        android:layout_below="@+id/et_Password"
-        />
+        android:layout_marginStart="100dp"/>
 
-    <TextView
+    <Button
         android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/input_style"
+        app:backgroundTint="@null"
         android:gravity="center"
-        android:padding="13dp"
+        android:padding="15dp"
         android:text="Login"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="25sp" />
+        android:textStyle="bold"
+        android:textSize="25sp"
+        />
 
     <TextView
         android:id="@+id/tv_account"
